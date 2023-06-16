@@ -3,11 +3,9 @@ import Features from '../../components/Features/Features'
 
 export default function Home() {
   return (
-    <>
-      <main>
-        <Hero />
-        <Features />
-      </main>
-    </>
+    <main>
+      <Hero />
+      <Features />
+    </main>
   )
 }
