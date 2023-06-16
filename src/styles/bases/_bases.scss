@@ -1,17 +1,28 @@
-*,
-*::before,
-*::after {
-  max-width: 1440px;
-  margin: auto;
-  box-sizing: border-box;
-  text-decoration: none;
+// *,
+// *::before,
+// *::after {
+//   max-width: 1440px;
+//   margin: auto;
+//   box-sizing: border-box;
+//   text-decoration: none;
+// }
+
+// root {
+//   width: 100%;
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   align-items: center;
+// }
+
+.main {
+  flex: 1;
 }
 
-root {
-  width: 100%;
-  min-height: 100vh;
+body {
+  margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  min-height: 100vh;
 }
