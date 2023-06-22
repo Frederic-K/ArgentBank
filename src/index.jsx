@@ -3,16 +3,22 @@ import ReactDOM from 'react-dom/client'
 import 'normalize.css'
 import './styles/style.scss'
 import App from './App'
-import { Provider } from 'react-redux'
-import { store } from './Store/store'
+// import store from './utils/store'
+// import { Provider } from 'react-redux'
 
-ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>,
-  document.getElementById('root')
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <React.StrictMode>
+//       <App />
+//     </React.StrictMode>
+//   </Provider>,
+//   document.getElementById('root')
+// )
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 )
 
 // If you want to start measuring performance in your app, pass a function
