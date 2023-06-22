@@ -57,11 +57,12 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     clearState: (state) => {
-      state.isError = false
-      state.isSuccess = false
-      state.isFetching = false
-
-      return state
+      return {
+        ...state,
+        isError: false,
+        isSuccess: false,
+        isFetching: false,
+      }
     },
   },
   extraReducers: {

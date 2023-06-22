@@ -1,6 +1,19 @@
+import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import toaste from 'react-hot-toast'
+import { useSelector, useDispatch } from 'react-redux'
+import { userSelector, loginUser, clearState } from '../../Slices/UserSlice'
 
 export default function Login() {
+  const dispatch = useDispatch()
+  const { isFetching, isSuccess, isError, errorMessage } =
+    useSelector(userSelector)
+
+  function handeleSubmit(event) {
+    event.preventDefault()
+    dispatch(loginUser(data))
+  }
+
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">
