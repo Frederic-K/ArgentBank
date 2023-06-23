@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { loginUser } from '../../utils/API/loginUser'
+import { userLogin } from '../../utils/API/userLogin'
 import { useSelector, useDispatch } from 'react-redux'
 import { userSelector, clearState } from '../../features/UserSlice'
 import SpinLoader from '../../components/Loader/SpinLoader'
@@ -14,13 +14,13 @@ export default function Login() {
   const { isFetching, isAuthenticated, isError, errorMessage } =
     useSelector(userSelector)
 
-  function handeleSubmit(event) {
-    event.preventDefault()
+  function handeleSubmit(e) {
+    e.preventDefault()
     const submitDatas = {
       email: email.current.value,
       password: password.current.value,
     }
-    dispatch(loginUser(submitDatas))
+    dispatch(userLogin(submitDatas))
   }
 
   useEffect(() => {
@@ -60,10 +60,6 @@ export default function Login() {
               <input type="checkbox" id="remember-me" />
               <label htmlFor="remember-me">Remember me</label>
             </div>
-            {/* <!-- PLACEHOLDER DUE TO STATIC SITE -->
-            <NavLink to="/profile" className="sign-in-button">
-              Sign In
-            </NavLink> */}
             <button className="sign-in-button">Sign In</button>
           </form>
         </section>

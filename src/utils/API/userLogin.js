@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-export const loginUser = createAsyncThunk(
+export const userLogin = createAsyncThunk(
   'user/login',
   async ({ email, password }, thunkAPI) => {
     try {

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { loginUser } from '../utils/API/loginUser'
+import { userLogin } from '../utils/API/userLogin'
 
 const initialState = {
   email: '',
@@ -27,7 +27,7 @@ export const userSlice = createSlice({
         initialState,
       }
     },
-    logOut: (state) => {
+    logout: (state) => {
       return {
         ...state,
         initialState,
@@ -42,7 +42,7 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginUser.fulfilled, (state, { payload }) => {
+      .addCase(userLogin.fulfilled, (state, { payload }) => {
         return {
           ...state,
           email: payload.email,
@@ -51,7 +51,7 @@ export const userSlice = createSlice({
           isAuthenticated: true,
         }
       })
-      .addCase(loginUser.rejected, (state, { payload }) => {
+      .addCase(userLogin.rejected, (state, { payload }) => {
         console.log('payload', payload)
         return {
           ...state,
@@ -60,7 +60,7 @@ export const userSlice = createSlice({
           errorMessage: payload.message,
         }
       })
-      .addCase(loginUser.pending, (state) => {
+      .addCase(userLogin.pending, (state) => {
         return {
           ...state,
           isFetching: true,
@@ -69,7 +69,7 @@ export const userSlice = createSlice({
   },
 })
 
-export const { clearState, logOut } = userSlice.actions
+export const { clearState, logout } = userSlice.actions
 
 export const userSelector = (state) => state.user
 
