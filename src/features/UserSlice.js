@@ -18,14 +18,14 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    clearState: (state) => {
-      return {
-        ...state,
-        isError: false,
-        isAuthenticated: false,
-        isFetching: false,
-      }
-    },
+    // clearState: (state) => {
+    //   return {
+    //     ...state,
+    //     isError: false,
+    //     isAuthenticated: false,
+    //     isFetching: false,
+    //   }
+    // },
     // remembered: (state) => {
     //   return {
     //     ...state,
@@ -64,3 +64,5 @@ export const userSlice = createSlice({
 export const { clearState, remembered } = userSlice.actions
 
 export const userSelector = (state) => state.user
+
+export default userSlice.reducer

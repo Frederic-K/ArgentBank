@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client'
 import 'normalize.css'
 import './styles/style.scss'
 import App from './App'
-// import store from './utils/store'
-// import { Provider } from 'react-redux'
+import store from './utils/store'
+import { Provider } from 'react-redux'
 
 // ReactDOM.render(
 //   <Provider store={store}>
@@ -17,7 +17,9 @@ import App from './App'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 )
 
