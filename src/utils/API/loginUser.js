@@ -16,9 +16,7 @@ export const loginUser = createAsyncThunk(
         }),
       })
       let data = await response.json()
-
       console.log('response', data)
-
       if (response.status === 200) {
         return data
       } else {
@@ -26,7 +24,6 @@ export const loginUser = createAsyncThunk(
       }
     } catch (error) {
       console.log('Error', error.response.data)
-
       thunkAPI.rejectWithValue(error.response.data)
     }
   }

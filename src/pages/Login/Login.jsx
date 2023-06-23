@@ -25,7 +25,8 @@ export default function Login() {
 
   useEffect(() => {
     if (isError) {
-      toast.error(errorMessage)
+      toast.error(errorMessage, { position: 'top-center' })
+      console.log('errToast', errorMessage)
       dispatch(clearState())
     }
     if (isAuthenticated) {
@@ -43,11 +44,11 @@ export default function Login() {
           <h1>Sign In</h1>
           <form onSubmit={handeleSubmit}>
             <div className="input-wrapper">
-              <label for="username">Username</label>
+              <label htmlFor="username">Username</label>
               <input type="text" id="username" ref={email} required={true} />
             </div>
             <div className="input-wrapper">
-              <label for="password">Password</label>
+              <label htmlFor="password">Password</label>
               <input
                 type="password"
                 id="password"
@@ -57,7 +58,7 @@ export default function Login() {
             </div>
             <div className="input-remember">
               <input type="checkbox" id="remember-me" />
-              <label for="remember-me">Remember me</label>
+              <label htmlFor="remember-me">Remember me</label>
             </div>
             {/* <!-- PLACEHOLDER DUE TO STATIC SITE -->
             <NavLink to="/profile" className="sign-in-button">
