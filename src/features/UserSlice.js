@@ -21,9 +21,16 @@ export const userSlice = createSlice({
     clearState: (state) => {
       return {
         ...state,
-        isError: false,
-        isAuthenticated: false,
-        isFetching: false,
+        // isError: false,
+        // isAuthenticated: false,
+        // isFetching: false,
+        initialState,
+      }
+    },
+    logOut: (state) => {
+      return {
+        ...state,
+        initialState,
       }
     },
     // remembered: (state) => {
@@ -62,7 +69,7 @@ export const userSlice = createSlice({
   },
 })
 
-export const { clearState, remembered } = userSlice.actions
+export const { clearState, logOut } = userSlice.actions
 
 export const userSelector = (state) => state.user
 
