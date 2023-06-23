@@ -2,16 +2,16 @@ import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import toaste from 'react-hot-toast'
 import { useSelector, useDispatch } from 'react-redux'
-import { userSelector, loginUser, clearState } from '../../Slices/UserSlice'
+import { userSelector, loginUser, clearState } from '../../features/UserSlice'
 
 export default function Login() {
   const dispatch = useDispatch()
-  const { isFetching, isSuccess, isError, errorMessage } =
+  const { isFetching, isAuthenticated, isError, errorMessage } =
     useSelector(userSelector)
 
   function handeleSubmit(event) {
     event.preventDefault()
-    dispatch(loginUser(data))
+    dispatch(loginUser(event))
   }
 
   return (
