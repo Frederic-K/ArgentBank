@@ -12,6 +12,7 @@ const initialState = {
   isAuthenticated: false,
   isError: false,
   errorMessage: '',
+  successMessage: '',
   // isRemenberMe: false,
 }
 
@@ -46,10 +47,10 @@ export const userSlice = createSlice({
       .addCase(userLogin.fulfilled, (state, { payload }) => {
         return {
           ...state,
-          email: payload.email,
-          token: payload.token,
+          token: payload.body.token,
           isFetching: false,
           isAuthenticated: true,
+          successMessage: payload.message,
         }
       })
       .addCase(userLogin.rejected, (state, { payload }) => {

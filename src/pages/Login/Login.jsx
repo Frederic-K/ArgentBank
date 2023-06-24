@@ -11,7 +11,7 @@ export default function Login() {
   const navigate = useNavigate()
   const email = useRef()
   const password = useRef()
-  const { isFetching, isAuthenticated, isError, errorMessage } =
+  const { isFetching, isAuthenticated, isError, errorMessage, successMessage } =
     useSelector(userSelector)
 
   function handeleSubmit(e) {
@@ -30,9 +30,11 @@ export default function Login() {
       dispatch(clearState())
     }
     if (isAuthenticated) {
+      toast.success(successMessage, { position: 'top-center' })
       navigate('/profile')
     }
-  }, [isError, isAuthenticated, errorMessage, dispatch, navigate])
+    // eslint-disable-next-line
+  }, [isAuthenticated, isError])
 
   return (
     <main className="main bg-dark">
