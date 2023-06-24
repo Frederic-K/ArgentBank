@@ -71,9 +71,9 @@ export const userSlice = createSlice({
       .addCase(userProfile.fulfilled, (state, { payload }) => {
         return {
           ...state,
-          email: payload.email,
-          firstname: payload.firstName,
-          lastname: payload.lastName,
+          email: payload.body.email,
+          firstname: payload.body.firstName,
+          lastname: payload.body.lastName,
           // id: payload.id,
           isFetching: false,
           isAuthenticated: true,
