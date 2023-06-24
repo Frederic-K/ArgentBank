@@ -5,10 +5,9 @@ import ArgentBankLogo from '../../assets/argentBankLogo.png'
 
 export default function Header() {
   const dispatch = useDispatch()
-  const { isAuthenticated, firstName } = useSelector(userSelector)
+  const { isAuthenticated } = useSelector(userSelector)
 
   const handelLogout = (e) => {
-    e.preventDefault()
     dispatch(logout())
   }
   return (
@@ -29,10 +28,10 @@ export default function Header() {
           </NavLink>
         ) : (
           <>
-            <NavLink to="/profile" className="main-nav-item">
+            {/* <NavLink to="/profile" className="main-nav-item">
               <i className="fa fa-user-circle"></i>
               {firstName}
-            </NavLink>
+            </NavLink> */}
             <NavLink to="/" className="main-nav-item" onClick={handelLogout}>
               Sign Out
             </NavLink>
