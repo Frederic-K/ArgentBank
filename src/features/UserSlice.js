@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { userLogin } from '../utils/API/userLogin'
+import { userLoad } from '../utils/API/userLoad'
 
 const initialState = {
   email: '',
   token: '',
   firstName: '',
   lastName: '',
-  id: '',
+  // id: '',
   isFetching: false,
   isAuthenticated: false,
   isError: false,
@@ -61,6 +62,32 @@ export const userSlice = createSlice({
         }
       })
       .addCase(userLogin.pending, (state) => {
+        return {
+          ...state,
+          isFetching: true,
+        }
+      })
+      .addCase(userLoad.fulfilled, (state, { payload }) => {
+        return {
+          ...state,
+          email: payload.email,
+          firstname: payload.firstName,
+          lastname: payload.lastName,
+          // id: payload.id,
+          isFetching: false,
+          isAuthenticated: true,
+        }
+      })
+      .addCase(userLoad.rejected, (state, { payload }) => {
+        console.log('payload', payload)
+        return {
+          ...state,
+          isFetching: false,
+          isError: true,
+          errorMessage: payload.message,
+        }
+      })
+      .addCase(userLoad.pending, (state) => {
         return {
           ...state,
           isFetching: true,

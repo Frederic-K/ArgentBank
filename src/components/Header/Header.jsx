@@ -2,14 +2,16 @@ import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { userSelector, logout } from '../../features/UserSlice'
 import ArgentBankLogo from '../../assets/argentBankLogo.png'
+// import { useEffect } from 'react'
 
 export default function Header() {
   const dispatch = useDispatch()
-  const { isAuthenticated } = useSelector(userSelector)
+  const { isAuthenticated, firstname } = useSelector(userSelector)
 
   const handelLogout = (e) => {
     dispatch(logout())
   }
+
   return (
     <nav className="main-nav">
       <NavLink to="/" className="main-nav-logo">
@@ -28,11 +30,15 @@ export default function Header() {
           </NavLink>
         ) : (
           <>
-            {/* <NavLink to="/profile" className="main-nav-item">
+            <NavLink to="/profile" className="main-nav-item">
               <i className="fa fa-user-circle"></i>
-              {firstName}
-            </NavLink> */}
-            <NavLink to="/" className="main-nav-item" onClick={handelLogout}>
+              {firstname}
+            </NavLink>
+            <NavLink
+              to="/"
+              className="main-nav-item"
+              onClick={() => handelLogout()}
+            >
               Sign Out
             </NavLink>
           </>
