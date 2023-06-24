@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { userLogin } from '../utils/API/userLogin'
-import { userProfile } from '../utils/API/userProfile'
+import { userLogin } from '../../services/API/userLogin'
+import { userProfile } from '../../services/API/userProfile'
 
 const initialState = {
   email: '',

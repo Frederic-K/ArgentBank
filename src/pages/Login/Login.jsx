@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { userLogin } from '../../utils/API/userLogin'
+import { userLogin } from '../../services/API/userLogin'
 import { useSelector, useDispatch } from 'react-redux'
-import { userSelector, clearState } from '../../features/UserSlice'
+import { userSelector, clearState } from '../../features/User/UserSlice'
 import SpinLoader from '../../components/Loader/SpinLoader'
 
 export default function Login() {

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { userSelector, logout } from '../../features/UserSlice'
+import { userSelector, logout } from '../../features/User/UserSlice'
 import ArgentBankLogo from '../../assets/argentBankLogo.png'
 // import { useEffect } from 'react'
 
