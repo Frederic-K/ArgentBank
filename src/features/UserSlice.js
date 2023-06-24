@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { userLogin } from '../utils/API/userLogin'
-import { userLoad } from '../utils/API/userLoad'
+import { userProfile } from '../utils/API/userProfile'
 
 const initialState = {
   email: '',
@@ -67,7 +67,7 @@ export const userSlice = createSlice({
           isFetching: true,
         }
       })
-      .addCase(userLoad.fulfilled, (state, { payload }) => {
+      .addCase(userProfile.fulfilled, (state, { payload }) => {
         return {
           ...state,
           email: payload.email,
@@ -78,7 +78,7 @@ export const userSlice = createSlice({
           isAuthenticated: true,
         }
       })
-      .addCase(userLoad.rejected, (state, { payload }) => {
+      .addCase(userProfile.rejected, (state, { payload }) => {
         console.log('payload', payload)
         return {
           ...state,
@@ -87,7 +87,7 @@ export const userSlice = createSlice({
           errorMessage: payload.message,
         }
       })
-      .addCase(userLoad.pending, (state) => {
+      .addCase(userProfile.pending, (state) => {
         return {
           ...state,
           isFetching: true,
