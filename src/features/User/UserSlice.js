@@ -23,16 +23,31 @@ export const userSlice = createSlice({
     clearState: (state) => {
       return {
         ...state,
-        // isError: false,
-        // isAuthenticated: false,
-        // isFetching: false,
-        initialState,
+        email: '',
+        token: '',
+        firstName: '',
+        lastName: '',
+        // id: '',
+        isFetching: false,
+        isAuthenticated: false,
+        isError: false,
+        errorMessage: '',
+        successMessage: '',
       }
     },
     logout: (state) => {
       return {
         ...state,
-        initialState,
+        email: '',
+        token: '',
+        firstName: '',
+        lastName: '',
+        // id: '',
+        isFetching: false,
+        isAuthenticated: false,
+        isError: false,
+        errorMessage: '',
+        successMessage: '',
       }
     },
     // remembered: (state) => {
