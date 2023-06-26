@@ -26,7 +26,7 @@ export default function Home() {
   //   </main>
   // )
   return (
-    <main>
+    <main className="main">
       <Hero />
       <Features />
     </main>
