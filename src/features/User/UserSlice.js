@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { userLogin } from '../../services/API/userLogin'
 import { userProfile } from '../../services/API/userProfile'
+import { userUpdate } from '../../services/API/userUpdate'
 
 const initialState = {
   email: '',
@@ -104,6 +105,29 @@ export const userSlice = createSlice({
         }
       })
       .addCase(userProfile.pending, (state) => {
+        return {
+          ...state,
+          isFetching: true,
+        }
+      })
+      .addCase(userUpdate.fulfilled, (state, { payload }) => {
+        return {
+          ...state,
+          firstname: payload.body.firstName,
+          lastname: payload.body.lastName,
+          isFetching: false,
+        }
+      })
+      .addCase(userUpdate.rejected, (state, { payload }) => {
+        console.log('payload', payload)
+        return {
+          ...state,
+          isFetching: false,
+          isError: true,
+          errorMessage: payload.message,
+        }
+      })
+      .addCase(userUpdate.pending, (state) => {
         return {
           ...state,
           isFetching: true,
