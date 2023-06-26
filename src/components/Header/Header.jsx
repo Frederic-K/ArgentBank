@@ -39,6 +39,7 @@ export default function Header() {
               className="main-nav-item"
               onClick={() => handelLogout()}
             >
+              <i className="fa fa-arrow-right-from-bracket"></i>
               Sign Out
             </NavLink>
           </>

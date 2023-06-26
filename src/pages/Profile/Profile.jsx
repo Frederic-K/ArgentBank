@@ -12,13 +12,13 @@ export default function Profile() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(userProfile({ token }))
-    } else {
+    if (!isAuthenticated) {
       navigate(`/login`)
+    } else {
+      dispatch(userProfile({ token }))
     }
     // eslint-disable-next-line
-  }, [token, isAuthenticated])
+  }, [isAuthenticated])
 
   return (
     <div className="wrapper">
