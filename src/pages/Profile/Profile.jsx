@@ -3,25 +3,24 @@ import { useSelector, useDispatch } from 'react-redux'
 import { userSelector } from '../../features/User/UserSlice'
 import { userProfile } from '../../services/API/userProfile'
 import { useNavigate } from 'react-router-dom'
-import toast from 'react-hot-toast'
-import UserUpdateModal from '../../components/UserUpdateModal/UserUpdateModal'
+// import toast from 'react-hot-toast'
 import { userUpdate } from '../../services/API/userUpdate'
 
 export default function Profile() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { isModalShown, setIsModalShow } = useState(false)
+  const [isModalShown, setIsModalShow] = useState(false)
   const newFirstname = useRef()
   const newLastname = useRef()
   const {
     token,
     isAuthenticated,
-    firstname,
-    lastname,
-    isFetching,
-    isError,
-    errorMessage,
-    successMessage,
+    firstName,
+    lastName,
+    // isFetching,
+    // isError,
+    // errorMessage,
+    // successMessage,
   } = useSelector(userSelector)
 
   const handelOpenModal = () => {
@@ -33,14 +32,17 @@ export default function Profile() {
     setIsModalShow(false)
   }
 
-  function handeleSubmit(e) {
+  function handeleUpdateSubmit(e) {
     e.preventDefault()
-    const submitDatas = {
+    e.stopPropagation()
+    const submitUpdateDatas = {
       token: token,
-      firstname: newFirstname.current.value,
-      lastname: newLastname.current.value,
+      firstName: newFirstname.current.value,
+      lastName: newLastname.current.value,
     }
-    dispatch(userUpdate(submitDatas))
+    console.log('sbmitDatas 4 update', submitUpdateDatas)
+    dispatch(userUpdate(submitUpdateDatas))
+    handelCloseModal()
   }
 
   useEffect(() => {
@@ -55,14 +57,52 @@ export default function Profile() {
   return (
     <main className="main bg-dark">
       {isModalShown ? (
-        <UserUpdateModal />
+        <div className="update-profile-wrapper">
+          <section className="update-profile-content">
+            <i className="fa fa-user-circle update-profile-icon"></i>
+            <h1>Update Profile</h1>
+            <form onSubmit={handeleUpdateSubmit}>
+              <div className="input-update-profile-wrapper">
+                <label htmlFor="newFirstname">New firstname</label>
+                <input
+                  type="text"
+                  id="newFirstname"
+                  ref={newFirstname}
+                  required={true}
+                  placeholder="new firstname"
+                />
+              </div>
+              <div className="input-update-profile-wrapper">
+                <label htmlFor="newLastname">New lastname</label>
+                <input
+                  type="text"
+                  id="newLastname"
+                  ref={newLastname}
+                  required={true}
+                  placeholder="new lastname"
+                />
+              </div>
+              <div className="update-profile-button-wrapper">
+                <button className="update-profile-button">Update</button>
+                <button
+                  className="update-profile-button"
+                  onClick={() => {
+                    setIsModalShow(false)
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
       ) : (
         <>
           <div className="header">
             <h1>
               Welcome back
               <br />
-              {firstname} {lastname}
+              {firstName} {lastName}
             </h1>
             <button className="edit-button" onClick={handelOpenModal}>
               Edit Name

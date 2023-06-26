@@ -88,8 +88,8 @@ export const userSlice = createSlice({
         return {
           ...state,
           email: payload.body.email,
-          firstname: payload.body.firstName,
-          lastname: payload.body.lastName,
+          firstName: payload.body.firstName,
+          lastName: payload.body.lastName,
           // id: payload.id,
           isFetching: false,
           isAuthenticated: true,
@@ -113,8 +113,8 @@ export const userSlice = createSlice({
       .addCase(userUpdate.fulfilled, (state, { payload }) => {
         return {
           ...state,
-          firstname: payload.body.firstName,
-          lastname: payload.body.lastName,
+          firstName: payload.body.firstName,
+          lastName: payload.body.lastName,
           isFetching: false,
         }
       })

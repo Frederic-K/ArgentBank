@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 
 export const userUpdate = createAsyncThunk(
   'user/update',
-  async ({ token, firstname, lastname }, thunkAPI) => {
+  async ({ token, firstName, lastName }, thunkAPI) => {
     try {
       const response = await fetch(
         'http://localhost:3001/api/v1/user/profile',
@@ -14,8 +14,9 @@ export const userUpdate = createAsyncThunk(
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            firstname,
-            lastname,
+            token,
+            firstName,
+            lastName,
           }),
         }
       )
