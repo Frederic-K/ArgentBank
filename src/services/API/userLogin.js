@@ -19,10 +19,10 @@ export const userLogin = createAsyncThunk(
       // console.log('response', data)
       // console.log('rememberMe', isRememberMe)
       // console.log('token', data.body.token)
-      let token = data.body.token
+      // let token = data.body.token
       if (response.status === 200) {
         if (isRememberMe) {
-          localStorage.setItem('token', token)
+          localStorage.setItem('token', data.body.token)
         }
         return data
       } else {

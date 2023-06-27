@@ -35,7 +35,7 @@ export default function Profile() {
     setIsModalShow(false)
   }
 
-  function handeleUpdateSubmit(e) {
+  const handeleUpdateSubmit = (e) => {
     e.preventDefault()
     e.stopPropagation()
     const submitUpdateDatas = {
@@ -80,7 +80,11 @@ export default function Profile() {
           <section className="update-profile-content">
             <i className="fa fa-user-circle update-profile-icon"></i>
             <h1>Update Profile</h1>
-            <form onSubmit={handeleUpdateSubmit}>
+            <form
+              onSubmit={(e) => {
+                handeleUpdateSubmit(e)
+              }}
+            >
               <div className="input-update-profile-wrapper">
                 <label htmlFor="newFirstname">New firstname</label>
                 <input
