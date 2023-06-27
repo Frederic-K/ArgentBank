@@ -14,7 +14,7 @@ const initialState = {
   isError: false,
   errorMessage: '',
   successMessage: '',
-  // isRemenberMe: false,
+  // isCheckBox: false,
 }
 
 export const userSlice = createSlice({
@@ -51,12 +51,6 @@ export const userSlice = createSlice({
         successMessage: '',
       }
     },
-    // remembered: (state) => {
-    //   return {
-    //     ...state,
-    //     isRememberMe: true,
-    //   }
-    // }
   },
   extraReducers: (builder) => {
     builder

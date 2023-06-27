@@ -17,7 +17,7 @@ export default function Profile() {
     isAuthenticated,
     firstName,
     lastName,
-    // isFetching,
+    isFetching,
     // isError,
     // errorMessage,
     // successMessage,

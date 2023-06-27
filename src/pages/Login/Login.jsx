@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { userLogin } from '../../services/API/userLogin'
@@ -9,8 +9,11 @@ import SpinLoader from '../../components/Loader/SpinLoader'
 export default function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
   const email = useRef()
   const password = useRef()
+  const [isCheckBox, setIsCheckBox] = useState(false)
+
   const { isFetching, isAuthenticated, isError, errorMessage, successMessage } =
     useSelector(userSelector)
 
@@ -52,7 +55,7 @@ export default function Login() {
                 id="username"
                 ref={email}
                 required={true}
-                placeholder="email"
+                placeholder="youremail@xyz.com"
               />
             </div>
             <div className="input-wrapper">
@@ -62,11 +65,30 @@ export default function Login() {
                 id="password"
                 ref={password}
                 required={true}
-                placeholder="password"
+                placeholder="****************"
               />
             </div>
             <div className="input-remember">
-              <input type="checkbox" id="remember-me" />
+              {/* {isCheckBox ? (
+                <input
+                  type="checkbox"
+                  id="remember-me"
+                  defaultChecked
+                  onChange={() => setIsCheckBox(!isCheckBox)}
+                />
+              ) : (
+                <input
+                  type="checkbox"
+                  id="remember-me"
+                  onChange={() => setIsCheckBox(!isCheckBox)}
+                />
+              )} */}
+              <input
+                type="checkbox"
+                id="remember-me"
+                defaultChecked
+                onClick={() => setIsCheckBox(!isCheckBox)}
+              />
               <label htmlFor="remember-me">Remember me</label>
             </div>
             <button className="sign-in-button">Sign In</button>
