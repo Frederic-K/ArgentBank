@@ -1,5 +1,8 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { userProfile } from './services/API/userProfile'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Home from './pages/Home/Home'
@@ -8,6 +11,13 @@ import Login from './pages/Login/Login'
 import Profile from './pages/Profile/Profile'
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if (localStorage.getItem('token') !== null) {
+      const token = localStorage.getItem('token')
+      dispatch(userProfile({ token }))
+    }
+  })
   return (
     <BrowserRouter>
       <Header />

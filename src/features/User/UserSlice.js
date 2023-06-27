@@ -95,7 +95,7 @@ export const userSlice = createSlice({
           lastName: payload.body.lastName,
           // id: payload.id,
           isFetching: false,
-          // isAuthenticated: true,
+          isAuthenticated: true,
         }
       })
       .addCase(userProfile.rejected, (state, { payload }) => {
