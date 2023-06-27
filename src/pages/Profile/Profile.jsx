@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { userSelector } from '../../features/User/UserSlice'
+import { userSelector, update } from '../../features/User/UserSlice'
 import { userProfile } from '../../services/API/userProfile'
 import { useNavigate } from 'react-router-dom'
-// import toast from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import { userUpdate } from '../../services/API/userUpdate'
+import SpinLoader from '../../components/Loader/SpinLoader'
 
 export default function Profile() {
   const dispatch = useDispatch()
@@ -12,15 +13,17 @@ export default function Profile() {
   const [isModalShown, setIsModalShow] = useState(false)
   const newFirstname = useRef()
   const newLastname = useRef()
+  // const [isUpdated, setisUpdated] = useState(false)
   const {
     token,
     isAuthenticated,
+    isUpdated,
     firstName,
     lastName,
     isFetching,
-    // isError,
-    // errorMessage,
-    // successMessage,
+    isError,
+    errorMessage,
+    successMessage,
   } = useSelector(userSelector)
 
   const handelOpenModal = () => {
@@ -46,13 +49,29 @@ export default function Profile() {
   }
 
   useEffect(() => {
+    if (isError) {
+      toast.error(errorMessage, { position: 'top-center' })
+      console.log('errToast', errorMessage)
+    }
+    if (isFetching) {
+      return <SpinLoader />
+    }
+    if (isUpdated) {
+      toast.success(successMessage, { position: 'top-center' })
+      dispatch(update())
+    }
+    // eslint-disable-next-line
+  }, [isError, isUpdated])
+
+  useEffect(() => {
+    console.log('auth', isAuthenticated)
     if (!isAuthenticated) {
       navigate(`/login`)
     } else {
       dispatch(userProfile({ token }))
     }
     // eslint-disable-next-line
-  }, [isAuthenticated])
+  }, [])
 
   return (
     <main className="main bg-dark">

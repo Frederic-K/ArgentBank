@@ -31,9 +31,16 @@ export const userSlice = createSlice({
         // id: '',
         isFetching: false,
         isAuthenticated: false,
+        isUpdated: false,
         isError: false,
         errorMessage: '',
         successMessage: '',
+      }
+    },
+    update: (state) => {
+      return {
+        ...state,
+        isUpdated: false,
       }
     },
     logout: (state) => {
@@ -46,6 +53,7 @@ export const userSlice = createSlice({
         // id: '',
         isFetching: false,
         isAuthenticated: false,
+        isUpdated: false,
         isError: false,
         errorMessage: '',
         successMessage: '',
@@ -86,7 +94,7 @@ export const userSlice = createSlice({
           lastName: payload.body.lastName,
           // id: payload.id,
           isFetching: false,
-          isAuthenticated: true,
+          // isAuthenticated: true,
         }
       })
       .addCase(userProfile.rejected, (state, { payload }) => {
@@ -110,6 +118,8 @@ export const userSlice = createSlice({
           firstName: payload.body.firstName,
           lastName: payload.body.lastName,
           isFetching: false,
+          isUpdated: true,
+          successMessage: payload.message,
         }
       })
       .addCase(userUpdate.rejected, (state, { payload }) => {
@@ -130,7 +140,7 @@ export const userSlice = createSlice({
   },
 })
 
-export const { clearState, logout } = userSlice.actions
+export const { clearState, update, logout } = userSlice.actions
 
 export const userSelector = (state) => state.user
 
