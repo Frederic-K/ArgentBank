@@ -71,7 +71,20 @@ export default function Profile() {
       dispatch(userProfile({ token }))
     }
     // eslint-disable-next-line
-  }, [])
+  }, [isAuthenticated])
+
+  // useEffect(() => {
+  //   console.log('auth', isAuthenticated)
+  //   if (!isAuthenticated) {
+  //     navigate(`/login`)
+  //   } else if (localStorage.getItem('token') !== null) {
+  //     const token = localStorage.getItem('token')
+  //     dispatch(userProfile({ token }))
+  //   } else {
+  //     dispatch(userProfile({ token }))
+  //   }
+  //   // eslint-disable-next-line
+  // }, [isAuthenticated])
 
   return (
     <main className="main bg-dark">
@@ -93,6 +106,8 @@ export default function Profile() {
                   ref={newFirstname}
                   required={true}
                   placeholder="new firstname"
+                  pattern="[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}]{1,30}"
+                  title="Chiffres et caractères spéciaux non autorisés"
                 />
               </div>
               <div className="input-update-profile-wrapper">
@@ -103,6 +118,8 @@ export default function Profile() {
                   ref={newLastname}
                   required={true}
                   placeholder="new lastname"
+                  pattern="[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}]{1,30}"
+                  title="Chiffres et caractères spéciaux non autorisés"
                 />
               </div>
               <div className="update-profile-button-wrapper">
@@ -127,7 +144,7 @@ export default function Profile() {
               <br />
               {firstName} {lastName}
             </h1>
-            <button className="edit-button" onClick={handelOpenModal}>
+            <button className="edit-button" onClick={() => handelOpenModal()}>
               Edit Name
             </button>
           </div>
