@@ -43,7 +43,7 @@ export default function Profile() {
       firstName: newFirstname.current.value,
       lastName: newLastname.current.value,
     }
-    console.log('sbmitDatas 4 update', submitUpdateDatas)
+    // console.log('sbmitDatas 4 update', submitUpdateDatas)
     dispatch(userUpdate(submitUpdateDatas))
     handelCloseModal()
   }

@@ -12,7 +12,7 @@ export default function Login() {
 
   const email = useRef()
   const password = useRef()
-  const [isCheckBox, setIsCheckBox] = useState(false)
+  const [isRememberMe, setIsRememberMe] = useState(true)
 
   const { isFetching, isAuthenticated, isError, errorMessage, successMessage } =
     useSelector(userSelector)
@@ -22,6 +22,7 @@ export default function Login() {
     const submitDatas = {
       email: email.current.value,
       password: password.current.value,
+      isRememberMe: isRememberMe,
     }
     dispatch(userLogin(submitDatas))
   }
@@ -69,25 +70,11 @@ export default function Login() {
               />
             </div>
             <div className="input-remember">
-              {/* {isCheckBox ? (
-                <input
-                  type="checkbox"
-                  id="remember-me"
-                  defaultChecked
-                  onChange={() => setIsCheckBox(!isCheckBox)}
-                />
-              ) : (
-                <input
-                  type="checkbox"
-                  id="remember-me"
-                  onChange={() => setIsCheckBox(!isCheckBox)}
-                />
-              )} */}
               <input
                 type="checkbox"
                 id="remember-me"
                 defaultChecked
-                onClick={() => setIsCheckBox(!isCheckBox)}
+                onClick={() => setIsRememberMe(!isRememberMe)}
               />
               <label htmlFor="remember-me">Remember me</label>
             </div>

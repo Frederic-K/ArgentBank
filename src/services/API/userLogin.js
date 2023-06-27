@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 
 export const userLogin = createAsyncThunk(
   'user/login',
-  async ({ email, password }, thunkAPI) => {
+  async ({ email, password, isRememberMe }, thunkAPI) => {
     try {
       const response = await fetch('http://localhost:3001/api/v1/user/login', {
         method: 'POST',
@@ -16,8 +16,14 @@ export const userLogin = createAsyncThunk(
         }),
       })
       let data = await response.json()
-      console.log('response', data)
+      // console.log('response', data)
+      // console.log('rememberMe', isRememberMe)
+      // console.log('token', data.body.token)
+      let token = data.body.token
       if (response.status === 200) {
+        if (isRememberMe) {
+          localStorage.setItem('token', token)
+        }
         return data
       } else {
         return thunkAPI.rejectWithValue(data)

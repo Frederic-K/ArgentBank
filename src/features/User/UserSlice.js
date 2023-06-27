@@ -14,7 +14,7 @@ const initialState = {
   isError: false,
   errorMessage: '',
   successMessage: '',
-  // isCheckBox: false,
+  // isRememberMe: false,
 }
 
 export const userSlice = createSlice({
@@ -44,6 +44,7 @@ export const userSlice = createSlice({
       }
     },
     logout: (state) => {
+      localStorage.clear()
       return {
         ...state,
         email: '',
