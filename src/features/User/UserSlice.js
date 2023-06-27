@@ -91,11 +91,13 @@ export const userSlice = createSlice({
         return {
           ...state,
           email: payload.body.email,
+          token: payload.body.token || localStorage.getItem('token'),
           firstName: payload.body.firstName,
           lastName: payload.body.lastName,
           // id: payload.id,
           isFetching: false,
           isAuthenticated: true,
+          successMessage: payload.message,
         }
       })
       .addCase(userProfile.rejected, (state, { payload }) => {
