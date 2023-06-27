@@ -17,7 +17,7 @@ export default function Login() {
   const { isFetching, isAuthenticated, isError, errorMessage, successMessage } =
     useSelector(userSelector)
 
-  function handeleSubmit(e) {
+  const handeleSubmit = (e) => {
     e.preventDefault()
     const submitDatas = {
       email: email.current.value,
@@ -48,7 +48,11 @@ export default function Login() {
         <section className="sign-in-content">
           <i className="fa fa-user-circle sign-in-icon"></i>
           <h1>Sign In</h1>
-          <form onSubmit={handeleSubmit}>
+          <form
+            onSubmit={(e) => {
+              handeleSubmit(e)
+            }}
+          >
             <div className="input-wrapper">
               <label htmlFor="username">Username</label>
               <input

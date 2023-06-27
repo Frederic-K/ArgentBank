@@ -8,7 +8,7 @@ export default function Header() {
   const dispatch = useDispatch()
   const { isAuthenticated, firstName } = useSelector(userSelector)
 
-  const handelLogout = (e) => {
+  const handelLogout = () => {
     dispatch(logout())
   }
 

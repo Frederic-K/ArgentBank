@@ -11,6 +11,7 @@ const initialState = {
   // id: '',
   isFetching: false,
   isAuthenticated: false,
+  isUpdated: false,
   isError: false,
   errorMessage: '',
   successMessage: '',
