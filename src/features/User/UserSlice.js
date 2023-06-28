@@ -5,7 +5,8 @@ import { userUpdate } from '../../services/API/userUpdate'
 
 const initialState = {
   email: '',
-  token: '',
+  // token: '',
+  token: localStorage.getItem('token') ?? null,
   firstName: '',
   lastName: '',
   // id: '',
@@ -92,7 +93,6 @@ export const userSlice = createSlice({
         return {
           ...state,
           email: payload.body.email,
-          token: payload.body.token || localStorage.getItem('token'),
           firstName: payload.body.firstName,
           lastName: payload.body.lastName,
           // id: payload.id,

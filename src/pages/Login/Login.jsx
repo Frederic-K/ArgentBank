@@ -38,7 +38,7 @@ export default function Login() {
       navigate('/profile')
     }
     // eslint-disable-next-line
-  }, [isAuthenticated, isError])
+  }, [isAuthenticated])
 
   return (
     <main className="main main-center bg-dark">

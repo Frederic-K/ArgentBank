@@ -1,9 +1,8 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-// import { useSelector } from 'react-redux'
-// import { userSelector } from './features/User/UserSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { userSelector } from './features/User/UserSlice'
 import { userProfile } from './services/API/userProfile'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
@@ -14,29 +13,14 @@ import Profile from './pages/Profile/Profile'
 
 function App() {
   const dispatch = useDispatch()
-
-  // Manage remember me option, if i reload homepge, still be login, but see in console that userProfile api is call 2 times ....
+  const { token } = useSelector(userSelector)
   useEffect(() => {
-    if (localStorage.getItem('token') !== null) {
-      const token = localStorage.getItem('token')
+    if (token !== null) {
+      console.log('token home', token)
       dispatch(userProfile({ token }))
     }
-  }, [dispatch])
-
-  // Test : try to fix userProfile call issue (double call isAuthentificated nd 2 api call)
-  // if comment useEffet whos call userProfile in profil page, i avoid double auth status, but now get 3 call to userProfile api
-
-  // const { token } = useSelector(userSelector)
-
-  // useEffect(() => {
-  //   if (localStorage.getItem('token') !== null) {
-  //     const token = localStorage.getItem('token')
-  //     dispatch(userProfile({ token }))
-  //   } else {
-  //     dispatch(userProfile({ token }))
-  //   }
-  //   // eslint-disable-next-line
-  // }, [])
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <BrowserRouter>

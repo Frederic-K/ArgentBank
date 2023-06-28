@@ -19,7 +19,7 @@ export const userProfile = createAsyncThunk(
       console.log('profile data', data, response.status)
       // return { ...data }
       if (response.status === 200) {
-        return { ...data }
+        return { ...data, token }
       } else {
         return thunkAPI.rejectWithValue(data)
       }
