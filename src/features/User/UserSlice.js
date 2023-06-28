@@ -5,8 +5,8 @@ import { userUpdate } from '../../services/API/userUpdate'
 
 const initialState = {
   email: '',
-  // token: '',
-  token: localStorage.getItem('token') ?? null,
+  token: '',
+  // token: localStorage.getItem('token') ?? null,
   firstName: '',
   lastName: '',
   // id: '',

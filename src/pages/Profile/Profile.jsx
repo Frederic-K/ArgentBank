@@ -61,7 +61,7 @@ export default function Profile() {
       dispatch(update())
     }
     // eslint-disable-next-line
-  }, [isUpdated])
+  }, [isError, isUpdated])
 
   useEffect(() => {
     console.log('auth', isAuthenticated)
@@ -71,7 +71,7 @@ export default function Profile() {
       dispatch(userProfile({ token }))
     }
     // eslint-disable-next-line
-  }, [])
+  }, [isAuthenticated])
 
   return (
     <main className="main bg-dark">
