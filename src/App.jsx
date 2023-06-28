@@ -1,9 +1,9 @@
 import React from 'react'
-// import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { userSelector } from './features/User/UserSlice'
-// import { userProfile } from './services/API/userProfile'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { userSelector } from './features/User/UserSlice'
+import { userProfile } from './services/API/userProfile'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Home from './pages/Home/Home'
@@ -12,15 +12,15 @@ import Login from './pages/Login/Login'
 import Profile from './pages/Profile/Profile'
 
 function App() {
-  // const dispatch = useDispatch()
-  // const { token } = useSelector(userSelector)
-  // useEffect(() => {
-  //   if (token !== null) {
-  //     console.log('token home', token)
-  //     dispatch(userProfile({ token }))
-  //   }
-  //   // eslint-disable-next-line
-  // }, [])
+  const dispatch = useDispatch()
+  const { token } = useSelector(userSelector)
+  useEffect(() => {
+    if (token !== null) {
+      console.log('token home', token)
+      dispatch(userProfile({ token }))
+    }
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <BrowserRouter>
