@@ -77,23 +77,6 @@ export default function Profile() {
     // eslint-disable-next-line
   }, [])
 
-  // useEffect(() => {
-  //   if (isError) {
-  //     toast.error(errorMessage, { position: 'top-center' })
-  //     console.log('errToast', errorMessage)
-  //   } else if (isFetching) {
-  //     return <SpinLoader />
-  //   } else if (isUpdated) {
-  //     toast.success(successMessage, { position: 'top-center' })
-  //     dispatch(update())
-  //   } else if (!isAuthenticated) {
-  //     navigate(`/login`)
-  //   } else {
-  //     dispatch(userProfile({ token }))
-  //   }
-  //   // eslint-disable-next-line
-  // }, [isError, isUpdated, isAuthenticated])
-
   return (
     <main className="main bg-dark">
       {isModalShown ? (
