@@ -57,7 +57,7 @@ export default function Profile() {
       return <SpinLoader />
     }
     // eslint-disable-next-line
-  }, [isError, isUpdated])
+  }, [isError])
 
   useEffect(() => {
     if (isUpdated) {
@@ -67,15 +67,26 @@ export default function Profile() {
     // eslint-disable-next-line
   }, [isUpdated])
 
+  // It works but call api twice
   useEffect(() => {
+    console.log('auth', isAuthenticated)
     if (!isAuthenticated) {
       navigate(`/login`)
-    }
-    if (firstName === '' || firstName === null) {
+    } else if (firstName === '') {
       dispatch(userProfile({ token }))
     }
     // eslint-disable-next-line
-  }, [])
+  }, [isAuthenticated])
+
+  // useEffect(() => {
+  //   console.log('auth', isAuthenticated)
+  //   if (!isAuthenticated) {
+  //     navigate(`/login`)
+  //   } else {
+  //     dispatch(userProfile({ token }))
+  //   }
+  //   // eslint-disable-next-line
+  // }, [isAuthenticated])
 
   return (
     <main className="main bg-dark">

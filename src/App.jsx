@@ -17,7 +17,6 @@ function App() {
 
   useEffect(() => {
     if (token !== null) {
-      console.log('token home', token)
       dispatch(userProfile({ token }))
     }
     // eslint-disable-next-line
