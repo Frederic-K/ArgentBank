@@ -48,30 +48,47 @@ export default function Profile() {
     handelCloseModal()
   }
 
+  // useEffect(() => {
+  //   if (isError) {
+  //     toast.error(errorMessage, { position: 'top-center' })
+  //     console.log('errToast', errorMessage)
+  //   }
+  //   if (isFetching) {
+  //     return <SpinLoader />
+  //   }
+  //   if (isUpdated) {
+  //     toast.success(successMessage, { position: 'top-center' })
+  //     dispatch(update())
+  //   }
+  //   // eslint-disable-next-line
+  // }, [isError, isUpdated])
+
+  // useEffect(() => {
+  //   console.log('auth', isAuthenticated)
+  //   if (!isAuthenticated) {
+  //     navigate(`/login`)
+  //   } else {
+  //     dispatch(userProfile({ token }))
+  //   }
+  //   // eslint-disable-next-line
+  // }, [isAuthenticated])
+
   useEffect(() => {
     if (isError) {
       toast.error(errorMessage, { position: 'top-center' })
       console.log('errToast', errorMessage)
-    }
-    if (isFetching) {
+    } else if (isFetching) {
       return <SpinLoader />
-    }
-    if (isUpdated) {
+    } else if (isUpdated) {
       toast.success(successMessage, { position: 'top-center' })
       dispatch(update())
-    }
-    // eslint-disable-next-line
-  }, [isError, isUpdated])
-
-  useEffect(() => {
-    console.log('auth', isAuthenticated)
-    if (!isAuthenticated) {
+    } else if (!isAuthenticated) {
       navigate(`/login`)
     } else {
       dispatch(userProfile({ token }))
     }
     // eslint-disable-next-line
-  }, [isAuthenticated])
+  }, [isError, isUpdated, isAuthenticated])
 
   return (
     <main className="main bg-dark">

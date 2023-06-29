@@ -14,6 +14,7 @@ import Profile from './pages/Profile/Profile'
 function App() {
   const dispatch = useDispatch()
   const { token } = useSelector(userSelector)
+
   useEffect(() => {
     if (token !== null) {
       console.log('token home', token)
