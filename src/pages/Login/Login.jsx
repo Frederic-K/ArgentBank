@@ -9,14 +9,15 @@ import SpinLoader from '../../components/Loader/SpinLoader'
 export default function Login() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  // Local states
   const email = useRef()
   const password = useRef()
   const [isRememberMe, setIsRememberMe] = useState(true)
-
+  // Grab user state (store)
   const { isFetching, isAuthenticated, isError, errorMessage, successMessage } =
     useSelector(userSelector)
 
+  // Manage login form to authentificate user
   const handeleSubmit = (e) => {
     e.preventDefault()
     const submitDatas = {
@@ -24,17 +25,20 @@ export default function Login() {
       password: password.current.value,
       isRememberMe: isRememberMe,
     }
+    // Call api to login
     dispatch(userLogin(submitDatas))
   }
 
+  // Manage feedback from api
   useEffect(() => {
     if (isError) {
       toast.error(errorMessage, { position: 'top-center' })
-      console.log('errToast', errorMessage)
+      // console.log('errToast', errorMessage)
       dispatch(clearState())
     }
     if (isAuthenticated) {
       toast.success(successMessage, { position: 'top-center' })
+      // Nav to auth user profile page
       navigate('/profile')
     }
     // eslint-disable-next-line
@@ -77,6 +81,7 @@ export default function Login() {
               <input
                 type="checkbox"
                 id="remember-me"
+                // Management of remember me option
                 defaultChecked
                 onClick={() => setIsRememberMe(!isRememberMe)}
               />

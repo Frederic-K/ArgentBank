@@ -1,3 +1,5 @@
+// API to login (nd grab token)
+
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 export const userLogin = createAsyncThunk(
@@ -21,6 +23,7 @@ export const userLogin = createAsyncThunk(
       // console.log('token', data.body.token)
       // let token = data.body.token
       if (response.status === 200) {
+        // Management of remember me option
         if (isRememberMe) {
           localStorage.setItem('token', data.body.token)
         }

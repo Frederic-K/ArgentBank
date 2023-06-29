@@ -1,3 +1,5 @@
+// API to grab user infos
+
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 export const userProfile = createAsyncThunk(

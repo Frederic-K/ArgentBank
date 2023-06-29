@@ -1,3 +1,5 @@
+// API to update user's names
+
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 export const userUpdate = createAsyncThunk(

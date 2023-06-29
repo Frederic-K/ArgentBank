@@ -23,6 +23,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    // State management from actions
     clearState: (state) => {
       return {
         ...state,
@@ -64,6 +65,7 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // State management from api feedback
     builder
       .addCase(userLogin.fulfilled, (state, { payload }) => {
         return {
@@ -143,9 +145,9 @@ export const userSlice = createSlice({
       })
   },
 })
-
+// Actions to manage state
 export const { clearState, update, logout } = userSlice.actions
-
+// Grab states
 export const userSelector = (state) => state.user
 
 export default userSlice.reducer

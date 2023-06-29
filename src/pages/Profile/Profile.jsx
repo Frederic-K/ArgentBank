@@ -10,24 +10,30 @@ import SpinLoader from '../../components/Loader/SpinLoader'
 export default function Profile() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  // Local states
   const [isModalShown, setIsModalShow] = useState(false)
   const newFirstname = useRef()
   const newLastname = useRef()
-  // const [isUpdated, setisUpdated] = useState(false)
+
+  // Grab user states (store)
   const {
+    email,
     token,
-    isAuthenticated,
     isUpdated,
     firstName,
     lastName,
     isFetching,
+    isAuthenticated,
     isError,
     errorMessage,
     successMessage,
   } = useSelector(userSelector)
 
+  // Manage opening the form to update user's names
   const handelOpenModal = () => {
+    // Ensure that the form is closed
     handelCloseModal()
+    // Manage form's local state
     setIsModalShow(true)
   }
 
@@ -35,7 +41,8 @@ export default function Profile() {
     setIsModalShow(false)
   }
 
-  const handeleUpdateSubmit = (e) => {
+  // Manage form to update user's names
+  const handelUpdateSubmit = (e) => {
     e.preventDefault()
     e.stopPropagation()
     const submitUpdateDatas = {
@@ -43,11 +50,13 @@ export default function Profile() {
       firstName: newFirstname.current.value,
       lastName: newLastname.current.value,
     }
-    // console.log('sbmitDatas 4 update', submitUpdateDatas)
+    // Call api to update user's names
     dispatch(userUpdate(submitUpdateDatas))
+    // Close form if required fields isnt empty
     handelCloseModal()
   }
 
+  // Manage call api feedback : post method to grab user infos, nd put method to update user names
   useEffect(() => {
     if (isError) {
       toast.error(errorMessage, { position: 'top-center' })
@@ -59,6 +68,7 @@ export default function Profile() {
     // eslint-disable-next-line
   }, [isError])
 
+  // Manage updating firstname nd lastname state
   useEffect(() => {
     if (isUpdated) {
       toast.success(successMessage, { position: 'top-center' })
@@ -67,26 +77,16 @@ export default function Profile() {
     // eslint-disable-next-line
   }, [isUpdated])
 
-  // It works but call api twice
   useEffect(() => {
     console.log('auth', isAuthenticated)
     if (!isAuthenticated) {
       navigate(`/login`)
-    } else if (firstName === '') {
+    } else if (email === '') {
+      // Set condition to avoid useless api call
       dispatch(userProfile({ token }))
     }
     // eslint-disable-next-line
   }, [isAuthenticated])
-
-  // useEffect(() => {
-  //   console.log('auth', isAuthenticated)
-  //   if (!isAuthenticated) {
-  //     navigate(`/login`)
-  //   } else {
-  //     dispatch(userProfile({ token }))
-  //   }
-  //   // eslint-disable-next-line
-  // }, [isAuthenticated])
 
   return (
     <main className="main bg-dark">
@@ -97,7 +97,7 @@ export default function Profile() {
             <h1>Update Profile</h1>
             <form
               onSubmit={(e) => {
-                handeleUpdateSubmit(e)
+                handelUpdateSubmit(e)
               }}
             >
               <div className="input-update-profile-wrapper">
