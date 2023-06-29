@@ -48,47 +48,51 @@ export default function Profile() {
     handelCloseModal()
   }
 
+  useEffect(() => {
+    if (isError) {
+      toast.error(errorMessage, { position: 'top-center' })
+      console.log('errToast', errorMessage)
+    }
+    if (isFetching) {
+      return <SpinLoader />
+    }
+    // eslint-disable-next-line
+  }, [isError, isUpdated])
+
+  useEffect(() => {
+    if (isUpdated) {
+      toast.success(successMessage, { position: 'top-center' })
+      dispatch(update())
+    }
+    // eslint-disable-next-line
+  }, [isUpdated])
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate(`/login`)
+    }
+    if (firstName === '' || firstName === null) {
+      dispatch(userProfile({ token }))
+    }
+    // eslint-disable-next-line
+  }, [])
+
   // useEffect(() => {
   //   if (isError) {
   //     toast.error(errorMessage, { position: 'top-center' })
   //     console.log('errToast', errorMessage)
-  //   }
-  //   if (isFetching) {
+  //   } else if (isFetching) {
   //     return <SpinLoader />
-  //   }
-  //   if (isUpdated) {
+  //   } else if (isUpdated) {
   //     toast.success(successMessage, { position: 'top-center' })
   //     dispatch(update())
-  //   }
-  //   // eslint-disable-next-line
-  // }, [isError, isUpdated])
-
-  // useEffect(() => {
-  //   console.log('auth', isAuthenticated)
-  //   if (!isAuthenticated) {
+  //   } else if (!isAuthenticated) {
   //     navigate(`/login`)
   //   } else {
   //     dispatch(userProfile({ token }))
   //   }
   //   // eslint-disable-next-line
-  // }, [isAuthenticated])
-
-  useEffect(() => {
-    if (isError) {
-      toast.error(errorMessage, { position: 'top-center' })
-      console.log('errToast', errorMessage)
-    } else if (isFetching) {
-      return <SpinLoader />
-    } else if (isUpdated) {
-      toast.success(successMessage, { position: 'top-center' })
-      dispatch(update())
-    } else if (!isAuthenticated) {
-      navigate(`/login`)
-    } else {
-      dispatch(userProfile({ token }))
-    }
-    // eslint-disable-next-line
-  }, [isError, isUpdated, isAuthenticated])
+  // }, [isError, isUpdated, isAuthenticated])
 
   return (
     <main className="main bg-dark">
