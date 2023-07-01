@@ -14,6 +14,7 @@ root.render(
   // Components will re-render an extra time to find bugs caused by impure rendering.
   // Components will re-run Effects an extra time to find bugs caused by missing Effect cleanup.
   // Components will be checked for usage of deprecated APIs.
+
   <React.StrictMode>
     <Provider store={store}>
       <div className="wrapper">

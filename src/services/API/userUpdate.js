@@ -23,7 +23,7 @@ export const userUpdate = createAsyncThunk(
         }
       )
       let data = await response.json()
-      console.log('dataUpdate', data, response.status)
+      // console.log('dataUpdate', data, response.status)
       if (response.status === 200) {
         return { ...data }
       } else {

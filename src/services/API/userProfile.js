@@ -18,7 +18,7 @@ export const userProfile = createAsyncThunk(
         }
       )
       let data = await response.json()
-      console.log('profile data', data, response.status)
+      // console.log('profile data', data, response.status)
       // return { ...data }
       if (response.status === 200) {
         return { ...data }
