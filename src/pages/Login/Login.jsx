@@ -32,7 +32,7 @@ export default function Login() {
   // Manage feedback from api
   useEffect(() => {
     if (isError) {
-      toast.error('Error : email or password incorrect', {
+      toast.error('Error : incorrect email or password', {
         position: 'top-center',
       })
       // console.log('errToast', errorMessage)
