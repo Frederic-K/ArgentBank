@@ -60,7 +60,7 @@ export default function Profile() {
   useEffect(() => {
     if (isError) {
       toast.error(errorMessage, { position: 'top-center' })
-      console.log('errToast', errorMessage)
+      // console.log('errToast', errorMessage)
     }
     if (isFetching) {
       return <SpinLoader />
@@ -78,7 +78,7 @@ export default function Profile() {
   }, [isUpdated])
 
   useEffect(() => {
-    console.log('auth', isAuthenticated)
+    // console.log('auth', isAuthenticated)
     if (!isAuthenticated) {
       navigate(`/login`)
     } else if (email === '') {

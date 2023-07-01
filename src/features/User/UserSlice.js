@@ -3,6 +3,8 @@ import { userLogin } from '../../services/API/userLogin'
 import { userProfile } from '../../services/API/userProfile'
 import { userUpdate } from '../../services/API/userUpdate'
 
+// const userToken = localStorage.getItem('token') ?? null
+
 const initialState = {
   email: '',
   // token: '',
@@ -16,7 +18,6 @@ const initialState = {
   isError: false,
   errorMessage: '',
   successMessage: '',
-  // isRememberMe: false,
 }
 
 export const userSlice = createSlice({

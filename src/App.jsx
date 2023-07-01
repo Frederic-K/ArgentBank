@@ -14,7 +14,7 @@ import Profile from './pages/Profile/Profile'
 function App() {
   const dispatch = useDispatch()
   const { token } = useSelector(userSelector)
-  // Management of remember me option
+  // Manage remember me option
   useEffect(() => {
     if (token !== null) {
       dispatch(userProfile({ token }))
