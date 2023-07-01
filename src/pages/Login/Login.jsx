@@ -18,7 +18,7 @@ export default function Login() {
     useSelector(userSelector)
 
   // Manage login form to authentificate user
-  const handeleSubmit = (e) => {
+  const heandleeSubmit = (e) => {
     e.preventDefault()
     const submitDatas = {
       email: email.current.value,
@@ -54,7 +54,7 @@ export default function Login() {
           <h1>Sign In</h1>
           <form
             onSubmit={(e) => {
-              handeleSubmit(e)
+              heandleeSubmit(e)
             }}
           >
             <div className="input-wrapper">

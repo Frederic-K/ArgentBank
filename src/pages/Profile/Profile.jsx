@@ -30,19 +30,19 @@ export default function Profile() {
   } = useSelector(userSelector)
 
   // Manage opening the form to update user's names
-  const handelOpenModal = () => {
+  const heandleOpenModal = () => {
     // Ensure that the form is closed
-    handelCloseModal()
+    heandleCloseModal()
     // Manage form's local state
     setIsModalShow(true)
   }
 
-  const handelCloseModal = () => {
+  const heandleCloseModal = () => {
     setIsModalShow(false)
   }
 
   // Manage form to update user's names
-  const handelUpdateSubmit = (e) => {
+  const heandleUpdateSubmit = (e) => {
     e.preventDefault()
     e.stopPropagation()
     const submitUpdateDatas = {
@@ -53,7 +53,7 @@ export default function Profile() {
     // Call api to update user's names
     dispatch(userUpdate(submitUpdateDatas))
     // Close form if required fields isnt empty
-    handelCloseModal()
+    heandleCloseModal()
   }
 
   // Manage call api feedback : post method to grab user infos, nd put method to update user names
@@ -97,7 +97,7 @@ export default function Profile() {
             <h1>Update Profile</h1>
             <form
               onSubmit={(e) => {
-                handelUpdateSubmit(e)
+                heandleUpdateSubmit(e)
               }}
             >
               <div className="input-update-profile-wrapper">
@@ -142,7 +142,7 @@ export default function Profile() {
               <br />
               {firstName} {lastName}
             </h1>
-            <button className="edit-button" onClick={() => handelOpenModal()}>
+            <button className="edit-button" onClick={() => heandleOpenModal()}>
               Edit Name
             </button>
           </div>

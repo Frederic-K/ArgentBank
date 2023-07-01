@@ -8,7 +8,7 @@ export default function Header() {
   const dispatch = useDispatch()
   const { isAuthenticated, firstName } = useSelector(userSelector)
 
-  const handelLogout = () => {
+  const heandleLogout = () => {
     dispatch(logout())
   }
 
@@ -37,7 +37,7 @@ export default function Header() {
             <NavLink
               to="/"
               className="main-nav-item"
-              onClick={() => handelLogout()}
+              onClick={() => heandleLogout()}
             >
               <i className="fa fa-arrow-right-from-bracket"></i>
               Sign Out

@@ -7,26 +7,21 @@ import App from './App'
 import store from './utils/store'
 import { Provider } from 'react-redux'
 
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <React.StrictMode>
-//       <App />
-//     </React.StrictMode>
-//   </Provider>,
-//   document.getElementById('root')
-// )
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  // Disable while coding : React StrictMode renders components twice on dev server
-  // Should set ON when builds the app for prod
-  // <React.StrictMode>
-  <Provider store={store}>
-    <div className="wrapper">
-      <Toaster />
-      <App />
-    </div>
-  </Provider>
-  // </React.StrictMode>
+  // Warning : React StrictMode renders components twice on dev server
+  // https://react.dev/reference/react/StrictMode
+  // Components will re-render an extra time to find bugs caused by impure rendering.
+  // Components will re-run Effects an extra time to find bugs caused by missing Effect cleanup.
+  // Components will be checked for usage of deprecated APIs.
+  <React.StrictMode>
+    <Provider store={store}>
+      <div className="wrapper">
+        <Toaster />
+        <App />
+      </div>
+    </Provider>
+  </React.StrictMode>
 )
 
 // If you want to start measuring performance in your app, pass a function
