@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { userSelector, update } from '../../features/User/UserSlice'
 import { userProfile } from '../../services/API/userProfile'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { userUpdate } from '../../services/API/userUpdate'
 import SpinLoader from '../../components/Loader/SpinLoader'
 
 export default function Profile() {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   // Local states
   const [isModalShown, setIsModalShow] = useState(false)
   const newFirstname = useRef()
@@ -23,7 +23,7 @@ export default function Profile() {
     firstName,
     lastName,
     isFetching,
-    isAuthenticated,
+    // isAuthenticated,
     isError,
     errorMessage,
     successMessage,
@@ -77,16 +77,26 @@ export default function Profile() {
     // eslint-disable-next-line
   }, [isUpdated])
 
+  // useEffect(() => {
+  //   console.log('auth', isAuthenticated)
+  //   if (!isAuthenticated) {
+  //     navigate(`/login`)
+  //   } else if (email === '') {
+  //     // Set condition to avoid useless api call
+  //     dispatch(userProfile({ token }))
+  //   }
+  //   // eslint-disable-next-line
+  // }, [isAuthenticated])
+
   useEffect(() => {
-    console.log('auth', isAuthenticated)
-    if (!isAuthenticated) {
-      navigate(`/login`)
-    } else if (email === '') {
+    console.log('email', email)
+    if (email === '') {
+      console.log('dispatch')
       // Set condition to avoid useless api call
       dispatch(userProfile({ token }))
     }
     // eslint-disable-next-line
-  }, [isAuthenticated])
+  }, [email])
 
   return (
     <main className="main bg-dark">
