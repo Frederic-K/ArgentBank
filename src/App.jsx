@@ -11,6 +11,8 @@ import Error404 from './pages/404/Error404'
 import Login from './pages/Login/Login'
 import Profile from './pages/Profile/Profile'
 
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'
+
 function App() {
   const dispatch = useDispatch()
   const { token } = useSelector(userSelector)
@@ -28,6 +30,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/profile" element={<Profile />} />
+        </Route>
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
