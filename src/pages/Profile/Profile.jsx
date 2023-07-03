@@ -60,32 +60,18 @@ export default function Profile() {
     if (isError) {
       toast.error(errorMessage, { position: 'top-center' })
       // console.log('errToast', errorMessage)
-    }
-    if (isFetching) {
-      return <SpinLoader />
-    }
-    // eslint-disable-next-line
-  }, [isError])
-
-  // Manage updating firstname nd lastname state
-  useEffect(() => {
-    if (isUpdated) {
+    } else if (isUpdated) {
+      // Manage updating firstname nd lastname state
       toast.success(successMessage, { position: 'top-center' })
       dispatch(update())
-    }
-    // eslint-disable-next-line
-  }, [isUpdated])
-
-  useEffect(() => {
-    // console.log('auth', token)
-    if (!token) {
+    } else if (!token) {
       navigate(`/`)
     } else if (email === '') {
       // Set condition to avoid useless api call
       dispatch(userProfile({ token }))
     }
     // eslint-disable-next-line
-  }, [token])
+  }, [isError, isUpdated, token])
 
   return (
     <main className="main bg-dark">
@@ -133,6 +119,8 @@ export default function Profile() {
             </form>
           </section>
         </div>
+      ) : isFetching ? (
+        <SpinLoader />
       ) : (
         <>
           <div className="header">
