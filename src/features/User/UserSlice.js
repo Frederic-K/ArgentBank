@@ -13,7 +13,7 @@ const initialState = {
   lastName: '',
   // id: '',
   isFetching: false,
-  isAuthenticated: false,
+  permission: [],
   isUpdated: false,
   isError: false,
   errorMessage: '',
@@ -34,7 +34,7 @@ export const userSlice = createSlice({
         lastName: '',
         // id: '',
         isFetching: false,
-        isAuthenticated: false,
+        permission: [],
         isUpdated: false,
         isError: false,
         errorMessage: '',
@@ -57,7 +57,7 @@ export const userSlice = createSlice({
         lastName: '',
         // id: '',
         isFetching: false,
-        isAuthenticated: false,
+        permission: [],
         isUpdated: false,
         isError: false,
         errorMessage: '',
@@ -73,7 +73,7 @@ export const userSlice = createSlice({
           ...state,
           token: payload.body.token,
           isFetching: false,
-          isAuthenticated: true,
+          permission: [],
           successMessage: payload.message,
         }
       })
@@ -100,7 +100,7 @@ export const userSlice = createSlice({
           lastName: payload.body.lastName,
           // id: payload.body.id,
           isFetching: false,
-          isAuthenticated: true,
+          permission: [],
           successMessage: payload.message,
         }
       })
@@ -116,7 +116,7 @@ export const userSlice = createSlice({
       .addCase(userProfile.pending, (state) => {
         return {
           ...state,
-          // isAuthenticated: true,
+          // permission: [],
           isFetching: true,
         }
       })
