@@ -30,6 +30,8 @@ export default function Login() {
   }
 
   // Manage feedback from api
+  // To avoid Warning: Cannot update a component from inside the function body of a different component,
+  // wrapp the setState call into useEffect.
   useEffect(() => {
     if (isError) {
       toast.error('Error : incorrect email or password', {
