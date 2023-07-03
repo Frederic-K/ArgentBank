@@ -11,7 +11,6 @@ import Error404 from './pages/404/Error404'
 import Login from './pages/Login/Login'
 import Profile from './pages/Profile/Profile'
 
-// import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import ProtectedRoutes from './components/ProtectedRoutes/ProtectedRoutes'
 
 function App() {
