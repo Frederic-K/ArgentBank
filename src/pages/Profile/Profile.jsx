@@ -23,7 +23,6 @@ export default function Profile() {
     firstName,
     lastName,
     isFetching,
-    isAuthenticated,
     isError,
     errorMessage,
     successMessage,
@@ -78,15 +77,15 @@ export default function Profile() {
   }, [isUpdated])
 
   useEffect(() => {
-    // console.log('auth', isAuthenticated)
-    if (!isAuthenticated) {
-      navigate(`/login`)
+    // console.log('auth', token)
+    if (!token) {
+      navigate(`/`)
     } else if (email === '') {
       // Set condition to avoid useless api call
       dispatch(userProfile({ token }))
     }
     // eslint-disable-next-line
-  }, [isAuthenticated])
+  }, [token])
 
   return (
     <main className="main bg-dark">

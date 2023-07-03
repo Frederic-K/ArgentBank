@@ -6,7 +6,7 @@ import ArgentBankLogo from '../../assets/argentBankLogo.png'
 
 export default function Header() {
   const dispatch = useDispatch()
-  const { isAuthenticated, firstName } = useSelector(userSelector)
+  const { token, firstName } = useSelector(userSelector)
 
   const heandleLogout = () => {
     dispatch(logout())
@@ -23,7 +23,7 @@ export default function Header() {
         <h1 className="sr-only">Argent Bank</h1>
       </NavLink>
       <div>
-        {!isAuthenticated ? (
+        {!token ? (
           <NavLink to="/login" className="main-nav-item">
             <i className="fa fa-user-circle"></i>
             Sign In
