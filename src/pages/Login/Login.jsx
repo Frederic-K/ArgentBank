@@ -14,7 +14,7 @@ export default function Login() {
   const password = useRef()
   const [isRememberMe, setIsRememberMe] = useState(true)
   // Grab user state (store)
-  const { isFetching, isAuthenticated, isError, errorMessage, successMessage } =
+  const { isFetching, token, isError, errorMessage, successMessage } =
     useSelector(userSelector)
 
   // Manage login form to authentificate user
@@ -38,13 +38,13 @@ export default function Login() {
       console.log('errToast', errorMessage)
       dispatch(clearState())
     }
-    if (isAuthenticated) {
+    if (token) {
       toast.success(successMessage, { position: 'top-center' })
       // Nav to auth user profile page
       navigate('/profile')
     }
     // eslint-disable-next-line
-  }, [isError, isAuthenticated])
+  }, [isError, token])
 
   return (
     <main className="main main-center bg-dark">
