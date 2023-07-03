@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux'
 import { userSelector } from '../../features/User/UserSlice'
 
 export default function PrivateRoute({ children }) {
-  const { token } = useSelector(userSelector)
-  if (!token) {
+  const { isAuthenticated } = useSelector(userSelector)
+  if (!isAuthenticated) {
     return <Navigate to="/" />
   }
   return children ? children : <Outlet />
