@@ -37,10 +37,9 @@ export default function Login() {
       toast.error('Error : incorrect email or password', {
         position: 'top-center',
       })
-      // console.log('errToast', errorMessage)
+      console.log('errToast', errorMessage)
       dispatch(clearState())
-    }
-    if (token) {
+    } else if (token) {
       toast.success(successMessage, { position: 'top-center' })
       // Nav to auth user profile page
       navigate('/profile')
