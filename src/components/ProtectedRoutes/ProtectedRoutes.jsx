@@ -2,12 +2,12 @@ import { Navigate, Outlet } from 'react-router-dom'
 // import { useSelector } from 'react-redux'
 // import { userSelector } from '../../features/User/UserSlice'
 
-const ProtectedRoute = ({ redirectPath = '/', isAllowed, children }) => {
-  if (!isAllowed) {
-    return <Navigate to={redirectPath} replace />
+const ProtectedRoutes = ({ redirectPath = '/', auth, children }) => {
+  if (!auth) {
+    return <Navigate to={redirectPath} />
   }
 
   return children ? children : <Outlet />
 }
 
-export default ProtectedRoute
+export default ProtectedRoutes

@@ -12,7 +12,7 @@ import Login from './pages/Login/Login'
 import Profile from './pages/Profile/Profile'
 
 // import PrivateRoute from './components/PrivateRoute/PrivateRoute'
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+import ProtectedRoutes from './components/ProtectedRoutes/ProtectedRoutes'
 
 function App() {
   const dispatch = useDispatch()
@@ -32,17 +32,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route element={<ProtectedRoute isAllowed={isAuthenticated} />}>
+        <Route element={<ProtectedRoutes auth={token} />}>
           <Route path="/profile" element={<Profile />} />
         </Route>
-        {/* <Route
-          path="profile"
-          element={
-            <ProtectedRoute isAllowed={isAuthenticated}>
-              <Profile />
-            </ProtectedRoute>
-          }
-        /> */}
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
