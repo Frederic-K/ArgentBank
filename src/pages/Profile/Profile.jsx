@@ -55,7 +55,7 @@ export default function Profile() {
     heandleCloseModal()
   }
 
-  // Manage call api feedback : post method to grab user infos, nd put method to update user names
+  // Manage call api feedback : post method to grab user infos, nd put method to update user's names
   useEffect(() => {
     if (isError) {
       toast.error(errorMessage, { position: 'top-center' })

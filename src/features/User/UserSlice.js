@@ -98,7 +98,7 @@ export const userSlice = createSlice({
           email: payload.body.email,
           firstName: payload.body.firstName,
           lastName: payload.body.lastName,
-          // id: payload.id,
+          // id: payload.body.id,
           isFetching: false,
           isAuthenticated: true,
           successMessage: payload.message,
@@ -116,6 +116,7 @@ export const userSlice = createSlice({
       .addCase(userProfile.pending, (state) => {
         return {
           ...state,
+          // isAuthenticated: true,
           isFetching: true,
         }
       })
