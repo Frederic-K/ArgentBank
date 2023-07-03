@@ -16,7 +16,7 @@ import ProtectedRoutes from './components/ProtectedRoutes/ProtectedRoutes'
 
 function App() {
   const dispatch = useDispatch()
-  const { token, isAuthenticated } = useSelector(userSelector)
+  const { token } = useSelector(userSelector)
 
   // Management of remember me option
   useEffect(() => {
