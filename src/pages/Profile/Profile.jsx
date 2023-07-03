@@ -15,7 +15,7 @@ export default function Profile() {
   const newFirstname = useRef()
   const newLastname = useRef()
 
-  // Grab user states (store)
+  // Grab user's states (store)
   const {
     email,
     token,
