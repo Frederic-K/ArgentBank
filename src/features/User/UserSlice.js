@@ -13,7 +13,7 @@ const initialState = {
   lastName: '',
   // id: '',
   isFetching: false,
-  permission: [],
+  // permission: [],
   isUpdated: false,
   isError: false,
   errorMessage: '',
@@ -34,7 +34,7 @@ export const userSlice = createSlice({
         lastName: '',
         // id: '',
         isFetching: false,
-        permission: [],
+        // permission: [],
         isUpdated: false,
         isError: false,
         errorMessage: '',
@@ -57,7 +57,7 @@ export const userSlice = createSlice({
         lastName: '',
         // id: '',
         isFetching: false,
-        permission: [],
+        // permission: [],
         isUpdated: false,
         isError: false,
         errorMessage: '',
@@ -73,10 +73,22 @@ export const userSlice = createSlice({
           ...state,
           token: payload.body.token,
           isFetching: false,
-          permission: [],
+          // permission: [],
           successMessage: payload.message,
         }
       })
+      // .addCase(userLogin.fulfilled, (state, { payload }) => {
+      //   state.token = payload.body.token
+      //   state.isFetching = false
+      //   state.permission = []
+      //   state.successMessage = payload.message
+      // })
+      // .addCase(userLogin.fulfilled, (state, action) => {
+      //   state.token = action.payload.body.token
+      //   state.isFetching = false
+      //   state.permission = []
+      //   state.successMessage = action.payload.message
+      // })
       .addCase(userLogin.rejected, (state, { payload }) => {
         console.log('payload', payload)
         return {
@@ -100,7 +112,7 @@ export const userSlice = createSlice({
           lastName: payload.body.lastName,
           // id: payload.body.id,
           isFetching: false,
-          permission: [],
+          // permission: [],
           successMessage: payload.message,
         }
       })
