@@ -4,7 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 const ProtectedRoutes = ({ redirectPath = '/', auth, children }) => {
   if (!auth) {
-    return <Navigate to={redirectPath} />
+    return <Navigate to={redirectPath} replace />
   }
 
   return children ? children : <Outlet />
