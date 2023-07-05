@@ -18,10 +18,9 @@ export const userLogin = createAsyncThunk(
         }),
       })
       let data = await response.json()
-      // console.log('response', data)
+      // console.log('response', data, response.status)
       // console.log('rememberMe', isRememberMe)
       // console.log('token', data.body.token)
-      // let token = data.body.token
       if (response.status === 200) {
         // Management of remember me option
         if (isRememberMe) {
