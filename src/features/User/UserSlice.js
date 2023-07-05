@@ -3,12 +3,17 @@ import { userLogin } from '../../services/API/userLogin'
 import { userProfile } from '../../services/API/userProfile'
 import { userUpdate } from '../../services/API/userUpdate'
 
+// const userToken = localStorage.getItem('token') ?? null
+
 const initialState = {
   email: '',
+  // token: '',
   token: localStorage.getItem('token') ?? null,
   firstName: '',
   lastName: '',
+  // id: '',
   isFetching: false,
+  // permission: [],
   isUpdated: false,
   isError: false,
   errorMessage: '',
@@ -27,7 +32,9 @@ export const userSlice = createSlice({
         token: '',
         firstName: '',
         lastName: '',
+        // id: '',
         isFetching: false,
+        // permission: [],
         isUpdated: false,
         isError: false,
         errorMessage: '',
@@ -48,7 +55,9 @@ export const userSlice = createSlice({
         token: '',
         firstName: '',
         lastName: '',
+        // id: '',
         isFetching: false,
+        // permission: [],
         isUpdated: false,
         isError: false,
         errorMessage: '',
@@ -64,9 +73,22 @@ export const userSlice = createSlice({
           ...state,
           token: payload.body.token,
           isFetching: false,
+          // permission: [],
           successMessage: payload.message,
         }
       })
+      // .addCase(userLogin.fulfilled, (state, { payload }) => {
+      //   state.token = payload.body.token
+      //   state.isFetching = false
+      //   state.permission = []
+      //   state.successMessage = payload.message
+      // })
+      // .addCase(userLogin.fulfilled, (state, action) => {
+      //   state.token = action.payload.body.token
+      //   state.isFetching = false
+      //   state.permission = []
+      //   state.successMessage = action.payload.message
+      // })
       .addCase(userLogin.rejected, (state, { payload }) => {
         console.log('payload', payload)
         return {
@@ -88,7 +110,9 @@ export const userSlice = createSlice({
           email: payload.body.email,
           firstName: payload.body.firstName,
           lastName: payload.body.lastName,
+          // id: payload.body.id,
           isFetching: false,
+          // permission: [],
           successMessage: payload.message,
         }
       })
@@ -104,6 +128,7 @@ export const userSlice = createSlice({
       .addCase(userProfile.pending, (state) => {
         return {
           ...state,
+          // permission: [],
           isFetching: true,
         }
       })
