@@ -43,7 +43,6 @@ export default function Profile() {
   // Manage form to update user's names
   const handleUpdateSubmit = (e) => {
     e.preventDefault()
-    e.stopPropagation()
     const submitUpdateDatas = {
       token: token,
       firstName: newFirstname.current.value,
