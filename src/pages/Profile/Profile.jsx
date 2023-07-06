@@ -108,9 +108,10 @@ export default function Profile() {
               <div className="update-profile-button-wrapper">
                 <button className="update-profile-button">Update</button>
                 <button
+                  type="button"
                   className="update-profile-button"
                   onClick={() => {
-                    setIsModalShow(false)
+                    handleCloseModal()
                   }}
                 >
                   Cancel
