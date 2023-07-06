@@ -108,6 +108,9 @@ export default function Profile() {
               <div className="update-profile-button-wrapper">
                 <button className="update-profile-button">Update</button>
                 <button
+                  // Cancel warning Form submission canceled because the form is not connected :
+                  // Make sure the buttons in the form have a type of button
+                  type="button"
                   className="update-profile-button"
                   onClick={() => {
                     setIsModalShow(false)
