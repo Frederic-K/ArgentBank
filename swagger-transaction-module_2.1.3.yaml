@@ -1,0 +1,294 @@
+swagger: '2.0'
+info:
+  title: Bank Argent API documentation
+  description: Contains all available API endpoints in this codebase
+  version: '2.1.3'
+  termsOfService: 'http://swagger.io/terms/'
+host: localhost:3001
+basePath: /api/v1
+schemes:
+  - http
+paths:
+  /transactions:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Transactions
+      summary: View current month transactions
+      description: API to view all transactions for the current month
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: header  
+          name: Date
+          description: Selected month's transaction
+          required: true
+          type: string
+    
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: User month's transactions retrieved successfully
+          schema:
+            $ref: "#/definitions/TransactionResponse"
+        "400":
+          description: Invalid Fields
+        "401":
+          description: Unauthorized  
+        "500":
+          description: Internal Server Error
+
+  /transactions/{transactionId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Transactions
+      summary: View a transaction's details
+      description: API to view the details of a transaction
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: transactionId
+          type: number
+          required: true
+  
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Transaction's details retrieved successully
+          schema:
+            $ref: "#/definitions/TransactionResponse"
+        "400":
+          description: Invalid Fields
+        "401":
+          description: Unauthorized  
+        "500":
+          description: Internal Server Error
+          
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - User Transactions
+      summary: Create transaction's comment
+      description: API to create transaction's comment
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: transactionId
+          type: number
+          required: true
+        - in: body
+          name: body
+          description: Create transaction's information 
+          required: true
+          schema:
+            $ref: "#/definitions/TransactionComment"
+      produces:
+        - application/json
+      responses:
+        "201":
+          description: Comments retrieved successully
+          schema:
+            $ref: "#/definitions/TransactionCommentResponse"
+        "400":
+          description: Invalid Fields
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error      
+          
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Transactions
+      summary: Update a transaction's comment
+      description: API to modify transaction's comment
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: transactionId
+          type: number
+          required: true
+        - in: body
+          name: body
+          description: Update transaction's information 
+          required: true
+          schema:
+            $ref: "#/definitions/TransactionComment"
+      produces:
+        - application/json
+      responses:
+        "201":
+          description: Updated comment retrieved successully
+          schema:
+            $ref: "#/definitions/TransactionCommentResponse"
+        "400":
+          description: Invalid Fields
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+          
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - User Transactions
+      summary: Delete a transaction's comment
+      description: API to delete a comment
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: transactionId
+          type: number
+          required: true
+
+      produces:
+        - application/json
+      responses:
+        "204":
+          description: Delete completed successfully
+        "400":
+          description: Invalid Fields
+        "500":
+          description: Internal Server Error
+  
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+
+  Transaction:
+    type: object
+    properties:
+      body:
+        type: array
+        items:
+          type: object
+          properties:
+            date:
+              type: string
+              description: transaction date
+            description:
+              type: string
+              description: transaction description
+            amount:
+              type: number
+              description: transaction amount
+            balance:
+              type: number
+              description: transaction description
+            transactionType:
+              type: string
+              description: transaction type
+            category:
+              type: string
+              description: transaction category
+            note:
+              type: string
+              description: transaction note
+
+  TransactionResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              description: user id
+            date:
+              type: string
+              description: transaction date
+            description:
+              type: string
+              description: transaction description
+            amount:
+              type: number
+              description: transaction amount
+            balance:
+              type: number
+              description: transaction description
+            transactionType:
+              type: string
+              description: transaction type
+            category:
+              type: string
+              description: transaction category
+            note:
+              type: string
+              description: transaction note
+              
+  TransactionComment:
+    type: object
+    properties:
+      body:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              description: user id
+            category:
+              type: string
+              description: transaction category
+            note:
+              type: string
+              description: transaction note            
+
+  TransactionCommentResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              description: user id
+            category:
+              type: string
+              description: transaction category
+            note:
+              type: string
+              description: transaction note  
+              
