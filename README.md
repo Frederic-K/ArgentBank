@@ -1,3 +1,42 @@
+Openclassrooms Projet 13 : Utilisez une API pour un compte utilisateur bancaire avec React - Site ArgentBank
+
+![banner](./src/assets/argentbankbanner.png)
+
+Le contexte du projet :
+
+- Mon profil : développeur front-end chez Remede Agency.
+- L’entreprise : une agence spécialisée dans le développement d’application web.
+- La mission : aider la banque Argent Bank à mettre en place son application.
+- L’objectif :
+  - Création d'une application web permettant aux clients de se connecter et de gérer leurs comptes et leur profil.
+  - Spécifier les endpoints d’API nécessaires pour une éventuelle deuxième mission.
+
+Cahier des charges :
+
+- Spécifications techniques :
+  - Phase 1 :
+    - Développer une application web complète et responsive avec React.
+    - Exploiter les API fournies par le back-end (documentation Swagger disponible).
+    - Utilisation de Redux pour gérer le state de l’ensemble de l’application.
+  - Phase 2 :
+    - Proposer une modélisation côté back-end des API pour les transactions.
+    - Fournir la documentation Swagger qui précise :
+      - La méthode
+      - Les routes
+      - La description
+      - Les paramètres et réponses
+- Spécifications fonctionnelles :
+  - Phase 1 :
+    - L'utilisateur peut visiter la page d'accueil.
+    - L'utilisateur peut se connecter au système.
+    - L'utilisateur peut se déconnecter du système.
+    - L'utilisateur ne peut voir les informations relatives à son propre profil qu'après s'être connecté avec succès.
+    - L'utilisateur peut modifier le profil et conserver les données dans la base de données.
+  - Phase 2 :
+    - Permettre de visualiser toutes leurs transactions pour le mois en cours.
+    - Permettre de visualiser les détails d'une transaction dans une autre vue.
+    - Permettre d'ajouter, de modifier ou de supprimer des informations sur une transaction.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
